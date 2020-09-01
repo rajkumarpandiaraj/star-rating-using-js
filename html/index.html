@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="../css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Rating</title>
+
+   
+
+</head>
+<body>
+    <div class="container">
+        <select name="" id="selected-product">
+            <option value="0" disabled selected>Select Product</option>
+            <option value="sony">Sony 4k TV</option>
+            <option value="samsung">Samsung 4k TV</option>
+            <option value="lg">LG 4k TV</option>
+            <option value="philips">Philips 4k TV</option>
+            <option value="vidiocon">Vidiocon 4k TV</option>
+
+        </select>
+
+        <input type="number" id="rating-number" step="0.1" max="5" disabled placeholder="Rate between 1-5">
+
+        <table class="table-data">
+            <thead>
+                <tr>
+                    <th>4k TV's</th>
+                    <th>Ratings</th>
+                </tr>
+                
+            </thead>
+
+            <tbody>
+                <tr id="sony">
+                    <td>Sony</td>
+                    <td>
+                        <div class="star-outer">
+                            <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                        </div>
+                        <div class="star-inner">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                        </div>
+                        <span class="rating-value"></span>
+                    </td>
+                </tr>
+
+                <tr id="samsung">
+                    <td>Samsung</td>
+                    <td>
+                        <div class="star-outer">
+                            <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                        </div>
+                        <div class="star-inner">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                        </div>
+                        <span class="rating-value"></span>
+                    </td>
+                </tr>
+
+                <tr id="lg">
+                    <td>LG</td>
+                    <td>
+                        <div class="star-outer">
+                            <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                        </div>
+                        <div class="star-inner">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                        </div>
+                        <span class="rating-value"></span>
+                    </td>
+                </tr>
+
+                <tr id="philips">
+                    <td>Philips</td>
+                    <td>
+                        <div class="star-outer">
+                            <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                        </div>
+                        <div class="star-inner">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                        </div>
+                        <span class="rating-value"></span>
+                    </td>
+                </tr>
+
+                <tr id="vidiocon">
+                    <td>Vidiocon</td>
+                    <td>
+                        <div class="star-outer">
+                            <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                        </div>
+                        <div class="star-inner">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                        </div>
+                        <span class="rating-value"></span>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+
+
+    </div>
+    
+    
+    
+    
+    
+    <script>
+        const ratings = {
+            sony : 5,
+            samsung : 4.2,
+            lg : 4,
+            philips : 3.5,
+            vidiocon : 2.7
+            
+        }
+
+    
+        document.addEventListener('DOMContentLoaded',getRating);
+        
+
+    function getRating(){
+        for (let rating in ratings) {
+            const rate = ratings[rating];
+            
+
+            const ratePercentage = `${(rate/5)*100}`;
+            const rateWidthPercentage = `${(Math.round(ratePercentage)/100)*105}`;
+
+            document.querySelector(`#${rating} .star-inner`).style.width = `${rateWidthPercentage}px`;
+            document.querySelector(`#${rating} .rating-value`).textContent = ratings[rating];
+        }
+
+
+    }
+
+   const selectedProduct = document.getElementById('selected-product');
+   const ratingNumber = document.getElementById('rating-number');
+   let Product ;
+   selectedProduct.addEventListener('change', (e) => {
+       ratingNumber.disabled = false;
+       
+       Product = e.target.value;
+       ratingNumber.value = ratings[Product];
+
+   });
+
+   ratingNumber.addEventListener('blur',(e) => {
+       const rating = e.target.value;
+
+       if(rating > 5){
+           alert('rating must between 1- 5');
+
+       }
+
+       ratings[Product] = rating;
+       getRating();
+
+
+   })
+
+
+
+
+    
+    
+
+    
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

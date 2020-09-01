@@ -1,0 +1,71 @@
+body{
+    width: 98vw;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+    margin: auto;
+
+    padding: 1rem;
+}
+
+select, input{
+    display: inline-block;
+    width: 80%;
+    padding: 0.8rem;
+    margin: 0.8em 0;
+}
+select option{
+   font-size: 1rem;
+}
+
+.table-data{
+    margin-top: 2rem;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+td,th{
+    width: 50%;
+    text-align: left;
+    padding: 0.6rem;
+}
+
+tbody tr:nth-child(odd){
+    background: rgb(160, 157, 157);
+}
+
+tbody td{
+    position: relative;
+}
+
+.star-outer{
+    position: absolute;
+    top: 10px;
+    left: 0;
+    display: inline-block;
+    color: #f8ce0b;
+    
+}
+
+
+.star-inner{
+    position: absolute;
+    top: 10px;
+    left: 0px;
+    white-space: nowrap;
+    overflow: hidden;
+
+    color: #f8ce0b;
+}
+
+span{
+    position: absolute;
+    top: 10px;
+    left: 120px;
+}
+
